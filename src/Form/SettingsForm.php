@@ -41,9 +41,23 @@ class SettingsForm extends ConfigFormBase {
 
     $form['subscription_key'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('API Token'),
+      '#title' => $this->t('Ocp Apim Subscription Key'),
       '#description' => $this->t('Cognitive Services Subscription Key to use.'),
       '#default_value' => $config->get('subscription_key'),
+    ];
+
+    $form['azure_region'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Select Microsoft Azure Region'),
+      '#description' => $this->t('Select Microsoft Azure Region to use for Cognitive Services API calls.'),
+      '#default_value' => $config->get('azure_region'),
+      '#options' => [
+        'westus' => 'West US',
+        'eastus2' => 'East US 2',
+        'westcentralus' => 'West Central US',
+        'westeurope' => 'West Europe',
+        'southeastasia' => 'Southeast Asia'
+      ],
     ];
 
     return parent::buildForm($form, $form_state);
@@ -55,6 +69,7 @@ class SettingsForm extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->config('azure_cognitive_services_api.settings')
       ->set('subscription_key', $form_state->getValue('subscription_key'))
+      ->set('azure_region', $form_state->getValue('azure_region'))
       ->save();
 
     parent::submitForm($form, $form_state);
