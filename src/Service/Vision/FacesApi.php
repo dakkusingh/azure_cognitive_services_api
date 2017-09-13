@@ -10,15 +10,7 @@ class FacesApi {
   const API_URL = '/face/v1.0/';
 
   /**
-   * @var Drupal\azure_cognitive_services_api\Service\Client
-   */
-  public $client;
-
-  /**
-   * Constructor for the Okta Users class.
-   *
-   * @param Drupal\azure_cognitive_services_api\Service\Client
-   *   A Client.
+   * Constructor for the Faces API class.
    */
   public function __construct(ConfigFactory $config_factory) {
     $this->client = new Client($config_factory, 'faces');
