@@ -20,7 +20,11 @@ class Client {
 
     $this->guzzleClient = new GuzzleClient(
       [
-        'base_uri' => $this->azureApiUri
+        'base_uri' => $this->azureApiUri,
+        'headers'  => [
+          'Content-Type' => 'application/json',
+          'Ocp-Apim-Subscription-Key' => $this->subscriptionKey
+        ],
       ]
     );
   }
@@ -31,10 +35,6 @@ class Client {
         $method,
         $this->azureApiUri . $uri,
         [
-          'headers' => [
-            'Content-Type' => 'application/json',
-            'Ocp-Apim-Subscription-Key' => $this->subscriptionKey
-          ],
           'json' => $body
         ]
       );
