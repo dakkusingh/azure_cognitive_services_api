@@ -43,7 +43,6 @@ class SettingsForm extends ConfigFormBase {
 
     $form['vision'] = [
       '#type' => 'vertical_tabs',
-      '#default_tab' => 'edit-publication',
     ];
 
     foreach ($tabs as $key => $value) {
@@ -73,6 +72,8 @@ class SettingsForm extends ConfigFormBase {
     }
 
     //$foo2 = \Drupal::service('azure_cognitive_services_api.faces_api')->detect('http://www.hairstylestyle.com/i/Salma-Hayek-Hairstyle.jpg');
+    //$foo2 = \Drupal::service('azure_cognitive_services_api.client');
+    //$foo2 = \Drupal::service('azure_cognitive_services_api.emotion_api')->recognize('http://www.hairstylestyle.com/i/Salma-Hayek-Hairstyle.jpg');
     //ksm($foo2);
     return parent::buildForm($form, $form_state);
   }
@@ -100,7 +101,7 @@ class SettingsForm extends ConfigFormBase {
   private function getTabs() {
     return [
       'faces' => 'Faces',
-      'emotions' => 'Emotions',
+      'emotion' => 'Emotion',
       'computervision' => 'Computer Vision',
       'contentmoderation' => 'Content Moderation',
     ];
