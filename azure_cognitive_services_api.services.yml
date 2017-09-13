@@ -4,13 +4,13 @@ services:
     arguments: ["@config.factory"]
   azure_cognitive_services_api.faces_api:
     class: Drupal\azure_cognitive_services_api\Service\Vision\FacesApi
-    arguments: ["@azure_cognitive_services_api.client"]
+    arguments: ["@config.factory"]
   azure_cognitive_services_api.computer_vision_api:
     class: Drupal\azure_cognitive_services_api\Service\Vision\ComputerVisionApi
-    arguments: ["@azure_cognitive_services_api.client"]
+    arguments: ["@config.factory"]
   azure_cognitive_services_api.emotion_api:
     class: Drupal\azure_cognitive_services_api\Service\Vision\EmotionApi
-    arguments: ["@azure_cognitive_services_api.client"]
+    arguments: ["@config.factory"]
   azure_cognitive_services_api.content_moderation_api:
     class: Drupal\azure_cognitive_services_api\Service\Vision\ContentModerationApi
-    arguments: ["@azure_cognitive_services_api.client"]
+    arguments: ["@config.factory"]

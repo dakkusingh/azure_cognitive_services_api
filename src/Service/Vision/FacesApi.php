@@ -3,6 +3,7 @@
 namespace Drupal\azure_cognitive_services_api\Service\Vision;
 
 use Drupal\azure_cognitive_services_api\Service\Client;
+use Drupal\Core\Config\ConfigFactory;
 
 class FacesApi {
 
@@ -19,8 +20,8 @@ class FacesApi {
    * @param Drupal\azure_cognitive_services_api\Service\Client
    *   A Client.
    */
-  public function __construct(Client $client) {
-    $this->client = $client;
+  public function __construct(ConfigFactory $config_factory) {
+    $this->client = new Client($config_factory, 'faces');
   }
 
   // See https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a
