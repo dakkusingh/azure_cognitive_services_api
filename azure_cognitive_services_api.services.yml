@@ -1,0 +1,13 @@
+services:
+  azure_cognitive_services_api.faces_api:
+    class: Drupal\azure_cognitive_services_api\Vision\FacesApi
+    arguments: ["@config.factory"]
+  azure_cognitive_services_api.computer_vision_api:
+    class: Drupal\azure_cognitive_services_api\Vision\ComputerVisionApi
+    arguments: ["@config.factory"]
+  azure_cognitive_services_api.emotion_api:
+    class: Drupal\azure_cognitive_services_api\Vision\EmotionApi
+    arguments: ["@config.factory"]
+  azure_cognitive_services_api.content_moderation_api:
+    class: Drupal\azure_cognitive_services_api\Vision\ContentModerationApi
+    arguments: ["@config.factory"]
