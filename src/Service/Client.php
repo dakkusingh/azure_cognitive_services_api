@@ -7,7 +7,7 @@ use GuzzleHttp\Client as GuzzleClient;
 
 class Client {
 
-  const API_BASE_URL = 'api.cognitive.microsoft.com';
+  const API_BASE_URL = '.api.cognitive.microsoft.com';
 
   /**
    * Create the Azure Cognitive Services client.
