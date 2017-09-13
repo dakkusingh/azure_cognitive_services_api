@@ -1,0 +1,4 @@
+name: 'Azure Cognitive Services API'
+description: 'Integrates Azure Cognitive Services API with Drupal'
+type: module
+core: 8.x
