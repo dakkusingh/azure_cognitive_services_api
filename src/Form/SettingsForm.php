@@ -56,14 +56,14 @@ class SettingsForm extends ConfigFormBase {
         '#group' => 'vision',
       ];
 
-      $form[$key][$key . '_subscription_key'] = [
+      $form[$key][$subKey] = [
         '#type' => 'textfield',
         '#title' => $this->t('Ocp Apim Subscription Key'),
         '#description' => $this->t('Cognitive Services Subscription Key to use.'),
         '#default_value' => $config->get($subKey),
       ];
 
-      $form[$key][$key . '_azure_region'] = [
+      $form[$key][$azureRegion] = [
         '#type' => 'select',
         '#title' => $this->t('Select Microsoft Azure Region'),
         '#description' => $this->t('Select Microsoft Azure Region to use for Cognitive Services API calls.'),
