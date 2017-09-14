@@ -37,44 +37,12 @@ class SettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $config = $this->config('azure_cognitive_services_api.settings');
-
-    $tabs = self::getTabs();
+    $this->config = $this->config('azure_cognitive_services_api.settings');
 
     $form['vision'] = [
       '#type' => 'vertical_tabs',
     ];
 
-    foreach ($tabs as $key => $value) {
-      $subKey = $key . '_subscription_key';
-      $azureRegion = $key . '_azure_region';
-
-      $form[$key] = [
-        '#type' => 'details',
-        '#title' => $this->t($value),
-        '#group' => 'vision',
-      ];
-
-      $form[$key][$subKey] = [
-        '#type' => 'textfield',
-        '#title' => $this->t('Ocp Apim Subscription Key'),
-        '#description' => $this->t('Cognitive Services Subscription Key to use.'),
-        '#default_value' => $config->get($subKey),
-      ];
-
-      $form[$key][$azureRegion] = [
-        '#type' => 'select',
-        '#title' => $this->t('Select Microsoft Azure Region'),
-        '#description' => $this->t('Select Microsoft Azure Region to use for Cognitive Services API calls.'),
-        '#default_value' => $config->get($azureRegion),
-        '#options' => self::getRegions(),
-      ];
-    }
-
-    //$foo2 = \Drupal::service('azure_cognitive_services_api.faces_api')->detect('http://www.hairstylestyle.com/i/Salma-Hayek-Hairstyle.jpg');
-    //$foo2 = \Drupal::service('azure_cognitive_services_api.client');
-    //$foo2 = \Drupal::service('azure_cognitive_services_api.emotion_api')->recognize('http://www.hairstylestyle.com/i/Salma-Hayek-Hairstyle.jpg');
-    //ksm($foo2);
     return parent::buildForm($form, $form_state);
   }
 
@@ -82,29 +50,16 @@ class SettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $config = $this->config('azure_cognitive_services_api.settings');
+    /*$config = $this->config('azure_cognitive_services_api.settings');
 
-    $tabs = self::getTabs();
-
-    foreach ($tabs as $key => $value) {
-      $subKey = $key . '_subscription_key';
-      $azureRegion = $key . '_azure_region';
-      $config->set($subKey, $form_state->getValue($subKey));
-      $config->set($azureRegion, $form_state->getValue($azureRegion));
-    }
+    $subKey = $key . '_subscription_key';
+    $azureRegion = $key . '_azure_region';
+    $config->set($subKey, $form_state->getValue($subKey));
+    $config->set($azureRegion, $form_state->getValue($azureRegion));
 
     $config->save();
 
-    parent::submitForm($form, $form_state);
-  }
-
-  private function getTabs() {
-    return [
-      'faces' => 'Faces',
-      'emotion' => 'Emotion',
-      'computervision' => 'Computer Vision',
-      'contentmoderation' => 'Content Moderation',
-    ];
+    parent::submitForm($form, $form_state);*/
   }
 
   private function getRegions() {
@@ -116,4 +71,33 @@ class SettingsForm extends ConfigFormBase {
       'southeastasia' => 'Southeast Asia'
     ];
   }
+
+  public function getFormElements($key, $value) {
+    $subKey = $key . '_subscription_key';
+    $azureRegion = $key . '_azure_region';
+
+    $formElements[$key] = [
+      '#type' => 'details',
+      '#title' => $this->t($value),
+      '#group' => 'vision',
+    ];
+
+    $formElements[$key][$subKey] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Ocp Apim Subscription Key'),
+      '#description' => $this->t('Cognitive Services Subscription Key to use.'),
+      '#default_value' => $this->config->get($subKey),
+    ];
+
+    $formElements[$key][$azureRegion] = [
+      '#type' => 'select',
+      '#title' => $this->t('Select Microsoft Azure Region'),
+      '#description' => $this->t('Select Microsoft Azure Region to use for Cognitive Services API calls.'),
+      '#default_value' => $this->config->get($azureRegion),
+      '#options' => self::getRegions(),
+    ];
+
+    return $formElements;
+  }
+
 }
