@@ -19,6 +19,13 @@ Microsoft Face API, a cloud-based service that provides the most advanced face a
 
 #### [Face - Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)
 
+## [Emotion API](https://docs.microsoft.com/en-us/azure/cognitive-services/emotion/home)
+
+The Emotion API beta takes an image as an input, and returns the confidence across a set of emotions for each face in the image, as well as bounding box for the face, from the Face API. The emotions detected are happiness, sadness, surprise, anger, fear, contempt, disgust or neutral. These emotions are communicated cross-culturally and universally via the same basic facial expressions, where are identified by Emotion API.
+
+### [Recognition](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa)
+Recognizes the emotions expressed by one or more people in an image, as well as returns a bounding box for the face. The emotions detected are happiness, sadness, surprise, anger, fear, contempt, and disgust or neutral.
+
 ## [Content Moderator - Moderate](https://azure.microsoft.com/en-us/services/cognitive-services/content-moderator/)
 Machine-assisted moderation of text and images, augmented with human review tools.
 
