@@ -2,9 +2,6 @@ services:
   azure_cognitive_services_api.client:
     class: Drupal\azure_cognitive_services_api\Service\Client
     arguments: ["@config.factory"]
-  azure_cognitive_services_api.faces_api:
-    class: Drupal\azure_cognitive_services_api\Service\Vision\FacesApi
-    arguments: ["@config.factory"]
   azure_cognitive_services_api.computer_vision_api:
     class: Drupal\azure_cognitive_services_api\Service\Vision\ComputerVisionApi
     arguments: ["@config.factory"]
