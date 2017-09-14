@@ -1,0 +1,9 @@
+azure_face_api.settings:
+  path: '/admin/config/azure_cognitive_services_api/face_api'
+  defaults:
+    _form: '\Drupal\azure_face_api\Form\SettingsForm'
+    _title: 'Azure Face API Settings'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE

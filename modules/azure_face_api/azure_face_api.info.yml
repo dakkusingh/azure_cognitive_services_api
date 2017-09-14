@@ -1,0 +1,4 @@
+name: 'Azure Face API'
+description: 'Integrates Azure Face API with Drupal'
+type: module
+core: 8.x
