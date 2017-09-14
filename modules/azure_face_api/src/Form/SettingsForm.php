@@ -2,7 +2,6 @@
 
 namespace Drupal\azure_face_api\Form;
 
-use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\azure_cognitive_services_api\Form\SettingsForm as AzureCognitiveServicesForm;
 

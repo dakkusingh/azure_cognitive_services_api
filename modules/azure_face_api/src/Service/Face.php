@@ -18,18 +18,18 @@ class Face {
 
   // See https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a
   public function detect($photoUrl,
-                         $faceId = true,
-                         $faceLandmarks = false,
-                         $faceAttributes = true
+                         $faceId = TRUE,
+                         $faceLandmarks = FALSE,
+                         $faceAttributes = TRUE
   ) {
     $uri = self::API_URL . 'detect';
     $params = [];
 
     if ($faceId) {
-      $params['returnFaceId'] = true;
+      $params['returnFaceId'] = TRUE;
     }
     if ($faceLandmarks) {
-      $params['returnFaceLandmarks'] = true;
+      $params['returnFaceLandmarks'] = TRUE;
     }
     if ($faceAttributes) {
       $params['returnFaceAttributes'] = implode(',', self::allowedFaceAttributes());
@@ -68,4 +68,5 @@ class Face {
       'noise',
     ];
   }
+
 }
