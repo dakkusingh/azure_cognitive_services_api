@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\azure_cognitive_services_api\Service\Vision;
+namespace Drupal\azure_emotion_api\Service;
 
 use Drupal\azure_cognitive_services_api\Service\Client;
 use Drupal\Core\Config\ConfigFactory;
 
-class EmotionApi {
+class Emotion {
 
   const API_URL = '/emotion/v1.0/';
 
@@ -24,7 +24,7 @@ class EmotionApi {
     return $result;
   }
 
-  public function recognizeFaceRectangles() {}
+  public function recognizeEmotionRectangles() {}
   public function recognizeInVideo() {}
 
 }

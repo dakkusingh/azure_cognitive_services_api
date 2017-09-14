@@ -5,9 +5,6 @@ services:
   azure_cognitive_services_api.computer_vision_api:
     class: Drupal\azure_cognitive_services_api\Service\Vision\ComputerVisionApi
     arguments: ["@config.factory"]
-  azure_cognitive_services_api.emotion_api:
-    class: Drupal\azure_cognitive_services_api\Service\Vision\EmotionApi
-    arguments: ["@config.factory"]
   azure_cognitive_services_api.content_moderation_api:
     class: Drupal\azure_cognitive_services_api\Service\Vision\ContentModerationApi
     arguments: ["@config.factory"]

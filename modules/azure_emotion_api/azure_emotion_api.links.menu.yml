@@ -1,0 +1,5 @@
+azure_emotion_api.settings:
+  title: 'Azure Emotion API Settings'
+  description: 'Manage settings for Azure Emotion API.'
+  parent: system.admin_config_system
+  route_name: azure_emotion_api.settings
