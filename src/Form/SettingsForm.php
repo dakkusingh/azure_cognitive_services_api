@@ -39,7 +39,7 @@ class SettingsForm extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $this->config = $this->config('azure_cognitive_services_api.settings');
 
-    $form['vision'] = [
+    $form['azure_cognitive_services_api'] = [
       '#type' => 'vertical_tabs',
     ];
 
@@ -79,7 +79,7 @@ class SettingsForm extends ConfigFormBase {
     $formElements[$key] = [
       '#type' => 'details',
       '#title' => $this->t($value),
-      '#group' => 'vision',
+      '#group' => 'azure_cognitive_services_api',
     ];
 
     $formElements[$key][$subKey] = [
