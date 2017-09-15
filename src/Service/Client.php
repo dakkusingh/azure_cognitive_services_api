@@ -4,6 +4,7 @@ namespace Drupal\azure_cognitive_services_api\Service;
 
 use Drupal\Core\Config\ConfigFactory;
 use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Exception\RequestException;
 
 class Client {
 
@@ -38,14 +39,21 @@ class Client {
           'json' => $body
         ]
       );
-    }
-    catch (\Exception $e) {
-      throw $e;
-    }
 
-    // TODO Check response.
+      return json_decode($response->getBody(), true);
+    }
+    catch (RequestException $e) {
+      \Drupal::logger('azure_cognitive_services_api')->warning(
+        "Azure Cognitive Services error code @code: @message",
+        [
+          '@code' => $e->getCode(),
+          '@message' => $e->getMessage()
+        ]
+      );
 
-    return json_decode($response->getBody(), true);
+      // TODO Should this service return FALSE or throw exception... hmm
+      return FALSE;
+    }
   }
 
 }
