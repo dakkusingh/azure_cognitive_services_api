@@ -113,14 +113,15 @@ class SettingsForm extends ConfigFormBase {
 
   private function listModules() {
     $modules = [];
-    if (\Drupal::moduleHandler()->moduleExists('azure_emotion_api')) {
-      $modules['emotion'] = 'Emotion';
+    $moduleHandler = \Drupal::moduleHandler();
+    if ($moduleHandler->moduleExists('azure_emotion_api')) {
+      $modules['emotion'] = 'Emotion API';
     }
-    if (\Drupal::moduleHandler()->moduleExists('azure_face_api')) {
-      $modules['face'] = 'Face';
+    if ($moduleHandler->moduleExists('azure_face_api')) {
+      $modules['face'] = 'Face API';
     }
-    if (\Drupal::moduleHandler()->moduleExists('azure_vision_api')) {
-      $modules['vision'] = 'Vision';
+    if ($moduleHandler->moduleExists('azure_vision_api')) {
+      $modules['vision'] = 'Computer Vision API';
     }
 
     return $modules;

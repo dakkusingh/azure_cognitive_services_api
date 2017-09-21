@@ -7,13 +7,3 @@ azure_cognitive_services_api.settings:
     _permission: 'administer site configuration'
   options:
     _admin_route: TRUE
-
-azure_cognitive_services_api.vision:
-  path: '/admin/config/azure_cognitive_services_api/vision'
-  defaults:
-    _form: '\Drupal\azure_cognitive_services_api\Form\SettingsForm'
-    _title: 'Vision'
-  requirements:
-    _permission: 'administer site configuration'
-  options:
-    _admin_route: TRUE
