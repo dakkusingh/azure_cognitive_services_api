@@ -5,6 +5,9 @@ namespace Drupal\azure_face_api\Service;
 use Drupal\azure_cognitive_services_api\Service\Client;
 use Drupal\Core\Config\ConfigFactory;
 
+/**
+ *
+ */
 class Face {
 
   const API_URL = '/face/v1.0/';
@@ -16,7 +19,9 @@ class Face {
     $this->client = new Client($config_factory, 'faces');
   }
 
-  // See https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a
+  /**
+   * See https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a.
+   */
   public function detect($photoUrl,
                          $faceId = TRUE,
                          $faceLandmarks = FALSE,
@@ -45,12 +50,29 @@ class Face {
     return $result;
   }
 
+  /**
+   *
+   */
   public function findsimilars() {}
+
+  /**
+   *
+   */
   public function group() {}
+
+  /**
+   *
+   */
   public function identify() {}
 
+  /**
+   *
+   */
   public function verify() {}
 
+  /**
+   *
+   */
   private function allowedFaceAttributes() {
     return [
       'age',

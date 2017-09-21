@@ -73,16 +73,22 @@ class SettingsForm extends ConfigFormBase {
     parent::submitForm($form, $form_state);
   }
 
+  /**
+   *
+   */
   private function getRegions() {
     return [
       'westus' => 'West US',
       'eastus2' => 'East US 2',
       'westcentralus' => 'West Central US',
       'westeurope' => 'West Europe',
-      'southeastasia' => 'Southeast Asia'
+      'southeastasia' => 'Southeast Asia',
     ];
   }
 
+  /**
+   *
+   */
   public function getFormElements($key, $value) {
     $subKey = $key . '_subscription_key';
     $azureRegion = $key . '_azure_region';
@@ -111,6 +117,9 @@ class SettingsForm extends ConfigFormBase {
     return $formElements;
   }
 
+  /**
+   *
+   */
   private function listModules() {
     $modules = [];
     $moduleHandler = \Drupal::moduleHandler();

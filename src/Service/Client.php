@@ -6,6 +6,9 @@ use Drupal\Core\Config\ConfigFactory;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\RequestException;
 
+/**
+ *
+ */
 class Client {
 
   const API_BASE_URL = '.api.cognitive.microsoft.com';
@@ -24,34 +27,37 @@ class Client {
         'base_uri' => $this->azureApiUri,
         'headers'  => [
           'Content-Type' => 'application/json',
-          'Ocp-Apim-Subscription-Key' => $this->subscriptionKey
+          'Ocp-Apim-Subscription-Key' => $this->subscriptionKey,
         ],
       ]
     );
   }
 
+  /**
+   *
+   */
   public function doRequest($uri, $method = 'GET', $body = []) {
     try {
       $response = $this->guzzleClient->request(
         $method,
         $this->azureApiUri . $uri,
         [
-          'json' => $body
+          'json' => $body,
         ]
       );
 
-      return json_decode($response->getBody(), true);
+      return json_decode($response->getBody(), TRUE);
     }
     catch (RequestException $e) {
       \Drupal::logger('azure_cognitive_services_api')->warning(
         "Azure Cognitive Services error code @code: @message",
         [
           '@code' => $e->getCode(),
-          '@message' => $e->getMessage()
+          '@message' => $e->getMessage(),
         ]
       );
 
-      // TODO Should this service return FALSE or throw exception... hmm
+      // TODO Should this service return FALSE or throw exception... hmm.
       return FALSE;
     }
   }
