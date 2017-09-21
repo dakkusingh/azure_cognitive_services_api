@@ -1,5 +1,5 @@
 azure_emotion_api.settings:
-  path: '/admin/config/azure_cognitive_services_api/emotion_api'
+  path: '/admin/config/azure_cognitive_services_api/vision/emotion_api'
   defaults:
     _form: '\Drupal\azure_emotion_api\Form\SettingsForm'
     _title: 'Azure Emotion API Settings'

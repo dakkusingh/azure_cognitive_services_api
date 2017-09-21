@@ -43,6 +43,13 @@ class SettingsForm extends ConfigFormBase {
       '#type' => 'vertical_tabs',
     ];
 
+    $modules = self::listModules();
+    if (!empty($modules)) {
+      foreach ($modules as $key => $value) {
+        $form += self::getFormElements($key, $value);
+      }
+    }
+
     return parent::buildForm($form, $form_state);
   }
 
@@ -50,16 +57,20 @@ class SettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    /*$config = $this->config('azure_cognitive_services_api.settings');
+    $config = $this->config('azure_cognitive_services_api.settings');
 
-    $subKey = $key . '_subscription_key';
-    $azureRegion = $key . '_azure_region';
-    $config->set($subKey, $form_state->getValue($subKey));
-    $config->set($azureRegion, $form_state->getValue($azureRegion));
+    $modules = self::listModules();
+    if (!empty($modules)) {
+      foreach ($modules as $key => $value) {
+        $subKey = $key . '_subscription_key';
+        $azureRegion = $key . '_azure_region';
+        $config->set($subKey, $form_state->getValue($subKey));
+        $config->set($azureRegion, $form_state->getValue($azureRegion));
+      }
+    }
 
     $config->save();
-
-    parent::submitForm($form, $form_state);*/
+    parent::submitForm($form, $form_state);
   }
 
   private function getRegions() {
@@ -98,6 +109,21 @@ class SettingsForm extends ConfigFormBase {
     ];
 
     return $formElements;
+  }
+
+  private function listModules() {
+    $modules = [];
+    if (\Drupal::moduleHandler()->moduleExists('azure_emotion_api')) {
+      $modules['emotion'] = 'Emotion';
+    }
+    if (\Drupal::moduleHandler()->moduleExists('azure_face_api')) {
+      $modules['face'] = 'Face';
+    }
+    if (\Drupal::moduleHandler()->moduleExists('azure_vision_api')) {
+      $modules['vision'] = 'Vision';
+    }
+
+    return $modules;
   }
 
 }

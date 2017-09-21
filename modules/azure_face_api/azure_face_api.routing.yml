@@ -1,5 +1,5 @@
 azure_face_api.settings:
-  path: '/admin/config/azure_cognitive_services_api/face_api'
+  path: '/admin/config/azure_cognitive_services_api/vision/face_api'
   defaults:
     _form: '\Drupal\azure_face_api\Form\SettingsForm'
     _title: 'Azure Face API Settings'

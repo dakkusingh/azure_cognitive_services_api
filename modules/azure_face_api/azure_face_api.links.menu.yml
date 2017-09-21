@@ -1,5 +1,0 @@
-azure_face_api.settings:
-  title: 'Azure Face API Settings'
-  description: 'Manage settings for Azure Face API.'
-  parent: system.admin_config_system
-  route_name: azure_face_api.settings

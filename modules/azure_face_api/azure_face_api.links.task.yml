@@ -1,0 +1,4 @@
+azure_face_api.settings:
+  title: 'Face'
+  route_name: azure_face_api.settings
+  parent_id: azure_cognitive_services_api.vision

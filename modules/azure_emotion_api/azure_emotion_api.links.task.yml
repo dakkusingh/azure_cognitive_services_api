@@ -1,0 +1,4 @@
+azure_emotion_api.settings:
+  title: 'Emotion'
+  route_name: azure_emotion_api.settings
+  parent_id: azure_cognitive_services_api.vision

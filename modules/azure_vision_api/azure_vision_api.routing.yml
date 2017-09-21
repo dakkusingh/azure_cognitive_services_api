@@ -1,5 +1,5 @@
 azure_vision_api.settings:
-  path: '/admin/config/azure_cognitive_services_api/vision_api'
+  path: '/admin/config/azure_cognitive_services_api/vision/vision_api'
   defaults:
     _form: '\Drupal\azure_vision_api\Form\SettingsForm'
     _title: 'Azure Computer Vision API Settings'
