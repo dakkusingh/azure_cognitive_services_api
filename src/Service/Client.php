@@ -16,7 +16,7 @@ class Client {
   /**
    * Create the Azure Cognitive Services client.
    */
-  public function __construct(ConfigFactory $config_factory, $service = 'faces') {
+  public function __construct(ConfigFactory $config_factory, $service = 'face') {
     // Get the config.
     $config = $config_factory->get('azure_cognitive_services_api.settings');
     $this->subscriptionKey = $config->get($service . '_subscription_key');
