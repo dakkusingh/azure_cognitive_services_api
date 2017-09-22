@@ -1,0 +1,12 @@
+allowed_visual_features:
+  - Categories
+  - Tags
+  - Description
+  - Faces
+  - ImageType
+  - Color
+  - Adult
+  
+allowed_details:
+  - Celebrities
+  - Landmarks

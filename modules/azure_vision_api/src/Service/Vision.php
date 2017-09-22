@@ -17,6 +17,7 @@ class Vision {
    */
   public function __construct(ConfigFactory $config_factory) {
     $this->client = new Client($config_factory, 'vision');
+    $this->config = $config_factory->get('azure_vision_api.settings');
   }
 
   /**
@@ -30,10 +31,12 @@ class Vision {
     $params = [];
 
     if ($details) {
-      $params['details'] = implode(',', self::allowedDetails());
+      $allowedDetails = $this->config->get('allowed_details');
+      $params['details'] = implode(',', $allowedDetails);
     }
     if ($visualFeatures) {
-      $params['visualFeatures'] = implode(',', self::allowedVisualFeatures());
+      $allowedVisualFeatures = $this->config->get('allowed_visual_features');
+      $params['visualFeatures'] = implode(',', $allowedVisualFeatures);
     }
 
     if (count($params) > 0) {
@@ -75,30 +78,5 @@ class Vision {
    *
    */
   public function tag() {}
-
-  /**
-   *
-   */
-  private function allowedVisualFeatures() {
-    return [
-      'Categories',
-      'Tags',
-      'Description',
-      'Faces',
-      'ImageType',
-      'Color',
-      'Adult',
-    ];
-  }
-
-  /**
-   *
-   */
-  private function allowedDetails() {
-    return [
-      'Celebrities',
-      'Landmarks',
-    ];
-  }
 
 }
