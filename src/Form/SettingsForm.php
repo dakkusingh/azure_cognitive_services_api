@@ -76,19 +76,6 @@ class SettingsForm extends ConfigFormBase {
   /**
    *
    */
-  private function getRegions() {
-    return [
-      'westus' => 'West US',
-      'eastus2' => 'East US 2',
-      'westcentralus' => 'West Central US',
-      'westeurope' => 'West Europe',
-      'southeastasia' => 'Southeast Asia',
-    ];
-  }
-
-  /**
-   *
-   */
   public function getFormElements($key, $value) {
     $subKey = $key . '_subscription_key';
     $azureRegion = $key . '_azure_region';
@@ -111,7 +98,7 @@ class SettingsForm extends ConfigFormBase {
       '#title' => $this->t('Select Microsoft Azure Region'),
       '#description' => $this->t('Select Microsoft Azure Region to use for Cognitive Services API calls.'),
       '#default_value' => $this->config->get($azureRegion),
-      '#options' => self::getRegions(),
+      '#options' => $this->config->get('azure_available_regions'),
     ];
 
     return $formElements;
