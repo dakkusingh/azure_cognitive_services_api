@@ -16,7 +16,8 @@ class Face {
    * Constructor for the Face API class.
    */
   public function __construct(ConfigFactory $config_factory) {
-    $this->client = new Client($config_factory, 'faces');
+    $this->client = new Client($config_factory, 'face');
+    $this->config = $config_factory->get('azure_face_api.settings');
   }
 
   /**
@@ -37,7 +38,8 @@ class Face {
       $params['returnFaceLandmarks'] = TRUE;
     }
     if ($faceAttributes) {
-      $params['returnFaceAttributes'] = implode(',', self::allowedFaceAttributes());
+      $allowedFaceAttributes = $this->config->get('allowed_face_attributes');
+      $params['returnFaceAttributes'] = implode(',', $allowedFaceAttributes);
     }
 
     if (count($params) > 0) {
@@ -69,26 +71,5 @@ class Face {
    *
    */
   public function verify() {}
-
-  /**
-   *
-   */
-  private function allowedFaceAttributes() {
-    return [
-      'age',
-      'gender',
-      'smile',
-      'facialHair',
-      'glasses',
-      'emotion',
-      'hair',
-      'makeup',
-      'occlusion',
-      'accessories',
-      'blur',
-      'exposure',
-      'noise',
-    ];
-  }
 
 }
