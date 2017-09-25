@@ -1,4 +1,0 @@
-services:
-  azure_vision_api.vision:
-    class: Drupal\azure_vision_api\Service\Vision
-    arguments: ["@config.factory"]
