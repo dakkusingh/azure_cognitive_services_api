@@ -7,6 +7,7 @@ use Drupal\Core\Config\ConfigFactory;
 
 /**
  *
+ * @property \Drupal\Core\Config\Config|\Drupal\Core\Config\ImmutableConfig config
  */
 class Vision {
 
@@ -14,6 +15,8 @@ class Vision {
 
   /**
    * Constructor for the Vision API class.
+   *
+   * @param \Drupal\Core\Config\ConfigFactory $config_factory
    */
   public function __construct(ConfigFactory $config_factory) {
     $this->client = new Client($config_factory, 'vision');
@@ -22,6 +25,12 @@ class Vision {
 
   /**
    * See https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1ff.
+   *
+   * @param $photoUrl
+   * @param bool $visualFeatures
+   * @param bool $details
+   *
+   * @return bool|mixed
    */
   public function analyze($photoUrl,
                           $visualFeatures = TRUE,

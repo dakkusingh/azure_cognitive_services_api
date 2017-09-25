@@ -15,6 +15,9 @@ class Client {
 
   /**
    * Create the Azure Cognitive Services client.
+   *
+   * @param \Drupal\Core\Config\ConfigFactory $config_factory
+   * @param string $service
    */
   public function __construct(ConfigFactory $config_factory, $service = 'face') {
     // Get the config.
@@ -31,6 +34,7 @@ class Client {
         ],
       ]
     );
+
   }
 
   /**

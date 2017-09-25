@@ -14,6 +14,8 @@ class Emotion {
 
   /**
    * Constructor for the Emotion API class.
+   *
+   * @param \Drupal\Core\Config\ConfigFactory $config_factory
    */
   public function __construct(ConfigFactory $config_factory) {
     $this->client = new Client($config_factory, 'emotion');
@@ -21,6 +23,10 @@ class Emotion {
 
   /**
    * See https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/56f23eb019845524ec61c4d7.
+   *
+   * @param $photoUrl
+   *
+   * @return bool|mixed
    */
   public function recognize($photoUrl) {
     $uri = self::API_URL . 'recognize';
