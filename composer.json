@@ -1,9 +1,0 @@
-{
-    "name": "drupal/azure_cognitive_services_api",
-    "description": "Azure Cognitive Services API",
-    "type": "drupal-module",
-    "minimum-stability": "dev",
-    "require": {
-      "foobar": "^1.2"
-    }
-}
