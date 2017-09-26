@@ -4,3 +4,5 @@ azure_available_regions:
   westcentralus: 'West Central US'
   westeurope: 'West Europe'
   southeastasia: 'Southeast Asia'
+
+azure_api_base_url: '.api.cognitive.microsoft.com'

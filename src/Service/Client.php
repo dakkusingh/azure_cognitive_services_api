@@ -11,36 +11,51 @@ use GuzzleHttp\Exception\RequestException;
  */
 class Client {
 
-  const API_BASE_URL = '.api.cognitive.microsoft.com';
+  /**
+   * @var \Drupal\Core\Config\ConfigFactory
+   */
+  private $configFactory;
 
   /**
    * Create the Azure Cognitive Services client.
    *
-   * @param \Drupal\Core\Config\ConfigFactory $config_factory
+   * @param \Drupal\Core\Config\ConfigFactory $configFactory
    * @param string $service
    */
-  public function __construct(ConfigFactory $config_factory, $service = 'face') {
+  public function __construct(ConfigFactory $configFactory) {
     // Get the config.
-    $config = $config_factory->get('azure_cognitive_services_api.settings');
-    $this->subscriptionKey = $config->get($service . '_subscription_key');
-    $this->azureApiUri = 'https://' . $config->get($service . '_azure_region') . self::API_BASE_URL;
-
-    $this->guzzleClient = new GuzzleClient(
-      [
-        'base_uri' => $this->azureApiUri,
-        'headers'  => [
-          'Content-Type' => 'application/json',
-          'Ocp-Apim-Subscription-Key' => $this->subscriptionKey,
-        ],
-      ]
-    );
-
+    $this->config = $configFactory->get('azure_cognitive_services_api.settings');
   }
 
   /**
-   *
+   * @param $service
    */
-  public function doRequest($uri, $method = 'GET', $body = []) {
+  public function getClient($service) {
+    $subscriptionKey = $this->config->get($service . '_subscription_key');
+    $azureApiUri = 'https://' . $this->config->get($service . '_azure_region') . $this->config->get('azure_api_base_url');
+
+    $this->guzzleClient = new GuzzleClient(
+      [
+        'base_uri' => $azureApiUri,
+        'headers'  => [
+          'Content-Type' => 'application/json',
+          'Ocp-Apim-Subscription-Key' => $subscriptionKey,
+        ],
+      ]
+    );
+  }
+
+  /**
+   * @param $service
+   * @param $uri
+   * @param string $method
+   * @param array $body
+   *
+   * @return bool|mixed
+   */
+  public function doRequest($service, $uri, $method = 'GET', $body = []) {
+    self::getClient($service);
+
     try {
       $response = $this->guzzleClient->request(
         $method,

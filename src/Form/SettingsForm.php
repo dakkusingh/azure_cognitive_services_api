@@ -74,7 +74,10 @@ class SettingsForm extends ConfigFormBase {
   }
 
   /**
+   * @param $key
+   * @param $value
    *
+   * @return mixed
    */
   public function getFormElements($key, $value) {
     $subKey = $key . '_subscription_key';
@@ -105,7 +108,7 @@ class SettingsForm extends ConfigFormBase {
   }
 
   /**
-   *
+   * @return array
    */
   private function listModules() {
     $modules = [];
