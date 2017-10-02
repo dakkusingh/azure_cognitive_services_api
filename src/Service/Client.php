@@ -20,7 +20,6 @@ class Client {
    * Create the Azure Cognitive Services client.
    *
    * @param \Drupal\Core\Config\ConfigFactory $configFactory
-   * @param string $service
    */
   public function __construct(ConfigFactory $configFactory) {
     // Get the config.
@@ -60,9 +59,7 @@ class Client {
       $response = $this->guzzleClient->request(
         $method,
         $this->azureApiUri . $uri,
-        [
-          'json' => $body,
-        ]
+        $body
       );
 
       return json_decode($response->getBody(), TRUE);
