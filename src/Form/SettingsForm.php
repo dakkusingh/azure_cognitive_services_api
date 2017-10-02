@@ -122,6 +122,9 @@ class SettingsForm extends ConfigFormBase {
     if ($moduleHandler->moduleExists('azure_vision_api')) {
       $modules['vision'] = 'Computer Vision API';
     }
+    if ($moduleHandler->moduleExists('azure_text_analytics_api')) {
+      $modules['text_analytics'] = 'Text Analytics API';
+    }
 
     return $modules;
   }
