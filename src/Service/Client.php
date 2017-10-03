@@ -58,7 +58,7 @@ class Client {
     try {
       $response = $this->guzzleClient->request(
         $method,
-        $this->azureApiUri . $uri,
+        $uri,
         $body
       );
 
