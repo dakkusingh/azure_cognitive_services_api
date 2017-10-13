@@ -7,6 +7,6 @@
       "drupal/azure_face_api": "*",
       "drupal/azure_emotion_api": "*",
       "drupal/azure_vision_api": "*",
-      "drupal/azure_text_analytics_api": "*",
+      "drupal/azure_text_analytics_api": "*"
     }
 }
